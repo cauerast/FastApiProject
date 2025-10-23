@@ -1,0 +1,64 @@
+from random import choices
+from sqlalchemy import create_engine, Column, String, Integer, Boolean, Float, ForeignKey
+from sqlalchemy.orm import declarative_base
+from sqlalchemy.util import OrderedProperties
+from sqlalchemy_utils import ChoiceType
+
+db = create_engine("sqlite:///bank.db")
+
+Base = declarative_base()
+
+#create a table w/
+# User
+# Order
+# OrderIten
+
+class User(Base):
+    __tablename__ = "Users"
+
+    id = Column("id", Integer, primary_key=True, autoincrement=True)
+    name = Column("name", String, nullable=False)
+    email = Column("email", String, nullable=False)
+    password = Column("password", String, nullable=False)
+    active = Column("active", Boolean)
+    admin = Column("admin", Boolean, default=False)
+
+    def __init__(self, name, email, password, active=True, admin=False):
+        self.name = name
+
+class Order(Base):
+    __tablename__ = "Orders"
+
+    ORDER_STATUS = [
+        ("PENDING", "Pending"),
+        ("CANCELED", "Canceled"),
+        ("FINALIZED", "Finalized")
+    ]
+
+    id = Column("id", Integer, primary_key=True, autoincrement=True)
+    status = Column("status", ChoiceType(choices=ORDER_STATUS)) # PENDING, CANCELED, FINALIZED
+    user = Column("user", ForeignKey("Users.id"))
+    price = Column("price", Float)
+    # itens = 
+
+    def __init__(self, user, status="PENDING", price=0):
+        self.user = user
+        self.status = status
+        self.price = price
+
+class OrderIten(Base):
+    __tablename__ = "OrderItens"
+
+    id = Column("id", Integer, primary_key=True, autoincrement=True)
+    quantity = Column("quantity", Integer)
+    flavor = Column("flavor", String)
+    size = Column("size", String)
+    unity_price = Column("unity_price", Float)
+    order = Column("order", ForeignKey("Orders.id"))
+
+    def __init__(self, quantity, flavor, size, unity_price, order):
+        self.quantity = quantity
+        self.flavor = flavor
+        self.size = size
+        self.unity_price = unity_price
+        self.order = order

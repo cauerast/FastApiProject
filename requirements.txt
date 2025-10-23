@@ -1,0 +1,10 @@
+Hello there, :)
+
+create the virtual envoirment
+    py -m venv .venv
+
+instal the dependences:
+    py -m pip install fastapi uvicorn sqlalchemy sqlalchemy_utils passlib[bcrypt] python-jose[cryptography] python-dotenv python-multipart 
+
+to run the project:
+    py -m uvicorn main:app --reload
