@@ -1,6 +1,7 @@
 from random import choices
 from sqlalchemy import create_engine, Column, String, Integer, Boolean, Float, ForeignKey
 from sqlalchemy.orm import declarative_base
+from sqlalchemy.util import OrderedProperties
 from sqlalchemy_utils import ChoiceType
 
 db = create_engine("sqlite:///bank.db")
