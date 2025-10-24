@@ -31,14 +31,14 @@ class User(Base):
 class Order(Base):
     __tablename__ = "Orders"
 
-    ORDER_STATUS = [
-        ("PENDING", "Pending"),
-        ("CANCELED", "Canceled"),
-        ("FINALIZED", "Finalized")
-    ]
+    #ORDER_STATUS = [
+    #    ("PENDING", "Pending"),
+    #    ("CANCELED", "Canceled"),
+    #    ("FINALIZED", "Finalized")
+    #]
 
     id = Column("id", Integer, primary_key=True, autoincrement=True)
-    status = Column("status", ChoiceType(choices=ORDER_STATUS)) # PENDING, CANCELED, FINALIZED
+    status = Column("status", String) # PENDING, CANCELED, FINALIZED
     user = Column("user", ForeignKey("Users.id"))
     price = Column("price", Float)
     # itens = 
