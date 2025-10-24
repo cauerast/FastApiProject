@@ -1,4 +1,3 @@
-from random import choices
 from sqlalchemy import create_engine, Column, String, Integer, Boolean, Float, ForeignKey
 from sqlalchemy.orm import declarative_base
 from sqlalchemy_utils import ChoiceType
@@ -24,6 +23,10 @@ class User(Base):
 
     def __init__(self, name, email, password, active=True, admin=False):
         self.name = name
+        self.email = email
+        self.password = password
+        self.active = active
+        self.admin = admin
 
 class Order(Base):
     __tablename__ = "Orders"
