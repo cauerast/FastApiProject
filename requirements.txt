@@ -4,7 +4,7 @@ create the virtual envoirment
     py -m venv .venv
 
 instal the dependences:
-    py -m pip install fastapi uvicorn sqlalchemy alembic passlib[bcrypt] python-jose[cryptography] python-dotenv python-multipart 
+    py -m pip install fastapi uvicorn sqlalchemy alembic bcrypt=4.0.1 passlib[bcrypt] python-jose[cryptography] python-dotenv python-multipart 
 
 to run the project:
     py -m uvicorn main:app --reload
