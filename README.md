@@ -35,19 +35,19 @@ The main goal is to provide a solid foundation for developing modern, secure, an
 ```
 
 📦 fastapi-app
-├── alembic/ # Alembic migrations
-├── alembic.ini # Alembic configuration
-├── auth_routes.py # Authentication routes (login, register, etc.)
-├── bank.db # SQLite database file
-├── dependencies.py # Dependency injection and utilities
-├── main.py # Application entry point
-├── models.py # SQLAlchemy ORM models
-├── order_routes.py # Endpoints for order management
-├── orderSchemas/ # Pydantic schemas for order validation
-├── schemas.py # General data schemas
-├── requirements.txt # Project dependencies
-├── .gitignore # Git ignore rules
-└── README.md # Project documentation
+├── alembic/           # Alembic migrations
+├── alembic.ini        # Alembic configuration
+├── auth_routes.py     # Authentication routes (login, register, etc.)
+├── bank.db            # SQLite database file
+├── dependencies.py    # Dependency injection and utilities
+├── main.py            # Application entry point
+├── models.py          # SQLAlchemy ORM models
+├── order_routes.py    # Endpoints for order management
+├── orderSchemas/      # Pydantic schemas for order validation
+├── schemas.py         # General data schemas
+├── requirements.txt   # Project dependencies
+├── .gitignore         # Git ignore rules
+└── README.md          # Project documentation
 
 ````
 
@@ -73,13 +73,13 @@ venv\Scripts\activate     # Windows
 ### 3️⃣ Install dependencies
 
 ```bash
-pip install -r requirements.txt
+py -m pip install fastapi uvicorn sqlalchemy alembic bcrypt=4.0.1 passlib[bcrypt] python-jose[cryptography] python-dotenv python-multipart 
 ```
 
 ### 4️⃣ Run the application
 
 ```bash
-uvicorn app.main:app --reload
+py -m uvicorn app.main:app --reload
 ```
 
 
