@@ -23,13 +23,13 @@ It is container-ready via Docker and compatible with both SQLite (for local test
 
 ## Core Features
 
-- **Order Management** — endpoints for creating, updating, retrieving, and deleting orders  
-- **User Authentication** — JWT-based authentication and password encryption using bcrypt  
-- **Clean Architecture** — separation of routes, models, schemas, and business logic  
-- **Database Migrations** — managed through Alembic  
-- **Automatic Documentation** — built-in Swagger and Redoc interfaces  
-- **Environment Configuration** — using `.env` files for safe variable handling  
-- **Docker Support** — ready for deployment in any environment  
+- **Order Management** - endpoints for creating, updating, retrieving, and deleting orders  
+- **User Authentication** - JWT-based authentication and password encryption using bcrypt  
+- **Clean Architecture** - separation of routes, models, schemas, and business logic  
+- **Database Migrations** - managed through Alembic  
+- **Automatic Documentation** - built-in Swagger and Redoc interfaces  
+- **Environment Configuration** - using `.env` files for safe variable handling  
+- **Docker Support** - ready for deployment in any environment  
 
 
 
