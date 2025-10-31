@@ -106,8 +106,8 @@ docker run -d -p 8000:8000 fastapi-app
 
 ## 🧠 Author
 
-**Cauê Silva Rasteiro**
-📧 [cauerast@gmail.com](mailto:cauerast@gmail.com)
+**Cauê Silva Rasteiro** <br>
+📧 [cauerast@gmail.com](mailto:cauerast@gmail.com) <br>
 🔗 [github.com/cauerast](https://github.com/cauerast) | [linkedin.com/in/cauerast](https://www.linkedin.com/in/cauerast/)
 
 
