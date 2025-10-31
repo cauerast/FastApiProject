@@ -1,4 +1,4 @@
-# 🚀 FastAPI Application
+# 🚀 FastAPI App - Orders API
 
 > Modern, high-performance, and scalable API built with **FastAPI**, following clean architecture and best coding practices.
 
@@ -11,8 +11,8 @@
 
 ## 📘 About the Project
 
-This project was developed to **build a robust, modular, and scalable RESTful API** using the **FastAPI** framework.  
-The application follows **Clean Architecture principles**, uses **static typing with Pydantic**, and includes **automatic API documentation with Swagger and Redoc**.
+This project was developed to build a robust, modular, and scalable RESTful API using the FastAPI framework.  
+The application follows Clean Architecture principles, uses static typing with Pydantic, and includes automatic API documentation with Swagger and Redoc.
 
 The main goal is to provide a solid foundation for developing modern, secure, and high-performance services — ideal for systems that demand both speed and maintainability.
 
@@ -20,13 +20,13 @@ The main goal is to provide a solid foundation for developing modern, secure, an
 
 ## 🧠 Core Technologies
 
-- **FastAPI** — modern and fast Python web framework for APIs  
-- **Pydantic** — data validation and type enforcement  
-- **Uvicorn** — high-performance ASGI server  
-- **SQLAlchemy** — ORM for database management  
-- **SQLite / PostgreSQL** — multi-database support  
-- **Docker** — simplified containerization and deployment  
-- **Git & GitHub Actions** — version control and CI/CD automation  
+- **FastAPI** - modern and fast Python web framework for APIs  
+- **Pydantic** - data validation and type enforcement  
+- **Uvicorn** - high-performance ASGI server  
+- **SQLAlchemy** - ORM for database management  
+- **SQLite / PostgreSQL** - multi-database support  
+- **Docker** - simplified containerization and deployment  
+- **Git & GitHub Actions** - version control and CI/CD automation  
 
 
 
@@ -107,7 +107,6 @@ docker run -d -p 8000:8000 fastapi-app
 ## 🧠 Author
 
 **Cauê Silva Rasteiro**
-Software Developer | Frontend & Backend | Automation & AI
 📧 [cauerast@gmail.com](mailto:cauerast@gmail.com)
 🔗 [github.com/cauerast](https://github.com/cauerast) | [linkedin.com/in/cauerast](https://www.linkedin.com/in/cauerast/)
 
