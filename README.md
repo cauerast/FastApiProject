@@ -1,6 +1,6 @@
 # FastAPI Orders API
 
-Open-source backend solution for managing and processing **orders** across multiple business domains — from restaurants to retail or logistics — built with **FastAPI**.  
+Open-source backend solution for managing and processing **orders** across multiple business domains — from restaurants to retail or logistics, built with **FastAPI**.  
 Designed for scalability, modularity, and clean architecture principles, this project provides a production-grade foundation for RESTful services.
 
 [Documentation](#documentation) • [Installation](#installation) • [Core-Features](#core-features) • [Project-Structure](#project-structure) • [Testing](#testing) • [License](#license)
@@ -16,7 +16,7 @@ Designed for scalability, modularity, and clean architecture principles, this pr
 **Orders API** is a backend service for managing customer orders, user authentication, and data persistence.  
 It was built to serve as a reference for scalable microservices and real-world systems where reliability, performance, and maintainability are essential.
 
-The project uses **FastAPI** as its core framework, with **SQLAlchemy** for ORM, **Alembic** for migrations, and **Pydantic** for validation.  
+The project uses FastAPI as its core framework, with SQLAlchemy for ORM, Alembic for migrations, and Pydantic for validation.  
 It is container-ready via Docker and compatible with both SQLite (for local testing) and PostgreSQL (for production).
 
 
@@ -100,10 +100,7 @@ Typical configuration values include:
 DATABASE_URL=sqlite:///./bank.db
 SECRET_KEY=your_secret_key
 ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=30
 ```
-
-
 
 ## Core Design Principles
 
@@ -112,7 +109,6 @@ ACCESS_TOKEN_EXPIRE_MINUTES=30
 * Layered architecture with clear domain boundaries
 * Structured exception handling
 * Integration-ready structure for other business domains (inventory, billing, etc.)
-
 
 
 ## Running with Docker
@@ -138,22 +134,11 @@ pytest
 
 Tests are designed to validate core business logic and endpoint responses, ensuring stability through API evolution.
 
-## Author
-
-**Cauê Silva Rasteiro**
-Software Developer
-
-- [cauerast@gmail.com](mailto:cauerast@gmail.com)
-- [github.com/cauerast](https://github.com/cauerast)
-- [linkedin.com/in/cauerast](https://www.linkedin.com/in/cauerast/)
-
-
 
 ## License
 
 This project is licensed under the **MIT License**.
 See the `LICENSE` file for more information.
-
 
 
 ## Additional Resources
@@ -164,7 +149,4 @@ See the `LICENSE` file for more information.
 * [Docker Documentation](https://docs.docker.com/)
 
 
-
-*Developed and maintained by **Cauê Silva Rasteiro** — designed for real-world performance, scalability, and clarity.*
-
-```
+*Developed and maintained by **Cauê Silva Rasteiro** — [cauerast@gmail.com](mailto:cauerast@gmail.com)*
