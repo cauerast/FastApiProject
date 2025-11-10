@@ -1,3 +1,4 @@
+from ssl import _PasswordType
 from pydantic import BaseModel
 from typing import Optional
 
@@ -17,3 +18,9 @@ class OrderSchema(BaseModel):
     class Config:
         from_attributes = True
 
+class LoginSchema(BaseModel):
+    email: str
+    password: str
+
+    class Config:
+        from_attributes = True
