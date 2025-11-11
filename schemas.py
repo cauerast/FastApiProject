@@ -1,4 +1,3 @@
-from ssl import _PasswordType
 from pydantic import BaseModel
 from typing import Optional
 
