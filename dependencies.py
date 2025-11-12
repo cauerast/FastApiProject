@@ -1,10 +1,9 @@
 from fastapi import Depends, HTTPException
-from main import ALGORITHM, SECRET_KEY
+from main import ALGORITHM, SECRET_KEY, oauth2_schema
 from models import db
 from sqlalchemy.orm import sessionmaker, Session
 from models import User
 from jose import jwt, JWTError
-
 
 def get_session():
     try:
@@ -14,7 +13,7 @@ def get_session():
     finally:
         session.close()
 
-def verify_token(token, session: Session = Depends(get_session)):
+def verify_token(token: str = Depends(oauth2_schema), session: Session = Depends(get_session)):
     try:
         dic_info = jwt.decode(token, SECRET_KEY, ALGORITHM)
         user_id = dic_info.get("sub")
