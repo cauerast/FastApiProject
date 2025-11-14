@@ -45,10 +45,14 @@ class Order(Base):
 
     def __init__(self, user, status="PENDING", price=0):
         self.user = user
-        self.status = status
         self.price = price
+        self.status = status
+    
+    def calculate_price(self):
+        self.price = 10
+        
 
-class OrderIten(Base):
+class OrderItem(Base):
     __tablename__ = "OrderItens"
 
     id = Column("id", Integer, primary_key=True, autoincrement=True)
