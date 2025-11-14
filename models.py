@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine, Column, String, Integer, Boolean, Float, ForeignKey
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy.orm.unitofwork import IterateMappersMixin
 from sqlalchemy_utils import ChoiceType
 
 db = create_engine("sqlite:///bank.db")
@@ -41,7 +42,7 @@ class Order(Base):
     status = Column("status", String) # PENDING, CANCELED, FINALIZED
     user = Column("user", ForeignKey("Users.id"))
     price = Column("price", Float)
-    # itens = 
+    items = relationship("OrderItem", cascade="all, delete")
 
     def __init__(self, user, status="PENDING", price=0):
         self.user = user
@@ -49,6 +50,10 @@ class Order(Base):
         self.status = status
     
     def calculate_price(self):
+        order_price = 0
+        for item in self.items:
+            item_price = item.unity_price * item.quantity
+            order_price += item_price
         self.price = 10
         
 

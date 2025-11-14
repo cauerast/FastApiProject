@@ -56,8 +56,8 @@ async def add_order_item(order_id: int,
                                 order_item_schema.size,
                                 order_item_schema.unity_price, 
                                 order_id)
-    order.calculate_price()
     session.add(order_item)
+    order.calculate_price()
     session.commit()
     return {
         "message": "Item sucessfuly created",
