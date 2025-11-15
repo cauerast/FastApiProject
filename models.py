@@ -1,26 +1,26 @@
 from sqlalchemy import create_engine, Column, String, Integer, Boolean, Float, ForeignKey
-from sqlalchemy.orm import declarative_base, relationship
-from sqlalchemy.orm.unitofwork import IterateMappersMixin
-from sqlalchemy_utils import ChoiceType
+from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 
-db = create_engine("sqlite:///bank.db")
+DATABASE_URL = "sqlite:///bank.db"
+
+db = create_engine(
+    DATABASE_URL, connect_args={"check_same_thread": False}
+)
+
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=db)
 
 Base = declarative_base()
 
-#create a table w/
-# User
-# Order
-# OrderIten
 
 class User(Base):
     __tablename__ = "Users"
 
-    id = Column("id", Integer, primary_key=True, autoincrement=True)
-    name = Column("name", String, nullable=False)
-    email = Column("email", String, nullable=False)
-    password = Column("password", String, nullable=False)
-    active = Column("active", Boolean)
-    admin = Column("admin", Boolean, default=False)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String, nullable=False)
+    email = Column(String, nullable=False)
+    password = Column(String, nullable=False)
+    active = Column(Boolean)
+    admin = Column(Boolean, default=False)
 
     def __init__(self, name, email, password, active=True, admin=False):
         self.name = name
@@ -29,43 +29,38 @@ class User(Base):
         self.active = active
         self.admin = admin
 
+
 class Order(Base):
     __tablename__ = "Orders"
 
-    #ORDER_STATUS = [
-    #    ("PENDING", "Pending"),
-    #    ("CANCELED", "Canceled"),
-    #    ("FINALIZED", "Finalized")
-    #]
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    status = Column(String)
+    user = Column(ForeignKey("Users.id"))
+    price = Column(Float, default=0)
 
-    id = Column("id", Integer, primary_key=True, autoincrement=True)
-    status = Column("status", String) # PENDING, CANCELED, FINALIZED
-    user = Column("user", ForeignKey("Users.id"))
-    price = Column("price", Float)
-    items = relationship("OrderItem", cascade="all, delete")
+    items = relationship("OrderItem", cascade="all, delete", backref="order_obj")
 
     def __init__(self, user, status="PENDING", price=0):
         self.user = user
-        self.price = price
         self.status = status
-    
+        self.price = price
+
     def calculate_price(self):
-        order_price = 0
+        total = 0
         for item in self.items:
-            item_price = item.unity_price * item.quantity
-            order_price += item_price
-        self.price = 10
-        
+            total += item.unity_price * item.quantity
+        self.price = total
+
 
 class OrderItem(Base):
-    __tablename__ = "OrderItens"
+    __tablename__ = "OrderItems"
 
-    id = Column("id", Integer, primary_key=True, autoincrement=True)
-    quantity = Column("quantity", Integer)
-    flavor = Column("flavor", String)
-    size = Column("size", String)
-    unity_price = Column("unity_price", Float)
-    order = Column("order", ForeignKey("Orders.id"))
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    quantity = Column(Integer)
+    flavor = Column(String)
+    size = Column(String)
+    unity_price = Column(Float)
+    order = Column(ForeignKey("Orders.id"))
 
     def __init__(self, quantity, flavor, size, unity_price, order):
         self.quantity = quantity
