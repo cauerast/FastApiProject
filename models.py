@@ -60,11 +60,12 @@ class OrderItem(Base):
     flavor = Column(String)
     size = Column(String)
     unity_price = Column(Float)
-    order = Column(ForeignKey("Orders.id"))
+    order_id = Column(Integer, ForeignKey("Orders.id"))
 
-    def __init__(self, quantity, flavor, size, unity_price, order):
+    def __init__(self, quantity, flavor, size, unity_price, order_id):
         self.quantity = quantity
         self.flavor = flavor
         self.size = size
         self.unity_price = unity_price
-        self.order = order
+        self.order_id = order_id
+

@@ -52,12 +52,8 @@ async def list_orders(session: Session = Depends(get_session), user: User = Depe
 
 
 @order_router.post("/order/add-item/{order_id}")
-async def add_order_item(
-    order_id: int,
-    order_item_schema: OrderItemSchema,
-    session: Session = Depends(get_session),
-    user: User = Depends(verify_token)
-):
+async def add_order_item(order_id: int, order_item_schema: OrderItemSchema, session: Session = Depends(get_session), user: User = Depends(verify_token)):
+
     order = session.query(Order).filter(Order.id == order_id).first()
 
     if not order:
@@ -67,11 +63,12 @@ async def add_order_item(
         raise HTTPException(status_code=401, detail="Access denied")
 
     order_item = OrderItem(
-    quantity=order_item_schema.quantity,
-    flavor=order_item_schema.flavor,
-    size=order_item_schema.size,
-    unity_price=order_item_schema.unity_price,
-    order_id=order_id)
+        quantity=order_item_schema.quantity,
+        flavor=order_item_schema.flavor,
+        size=order_item_schema.size,
+        unity_price=order_item_schema.unity_price,
+        order_id=order_id
+    )
     
     session.add(order_item)
     order.calculate_price()
@@ -95,15 +92,13 @@ async def remove_order_item(
     if not order_item:
         raise HTTPException(status_code=400, detail="Order item does not exist")
 
-    order = session.query(Order).filter(Order.id == order_item.order).first()
+    order = session.query(Order).filter(Order.id == order_item.order_id).first()
 
     if not user.admin:
         raise HTTPException(status_code=401, detail="Access denied")
 
     session.delete(order_item)
-
     order.calculate_price()
-
     session.commit()
 
     return {
